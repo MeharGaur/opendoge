@@ -34,7 +34,6 @@ class MyDocument extends Document {
         </Head>
         <body>
           <Main />
-          <div id="background"></div>
           <NextScript />
         </body>
       </Html>

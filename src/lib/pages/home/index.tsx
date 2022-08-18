@@ -1,18 +1,22 @@
 import type { NextPage } from "next";
 import SomeText from "lib/components/samples/SomeText";
-import { useRef, useState, useEffect } from "react";
-import { DatasetJsonLd } from "next-seo";
-import Web3 from "web3";
-import { ChainUnknownError } from "use-wallet/dist/cjs/errors";
-import Script from "next/script";
 import Button from "lib/components/ui/Button";
 import LandingSection from "lib/components/ui/LandingSection";
+import { ConnectButton } from "@rainbow-me/rainbowkit";
+import { useAccount, useConnect } from "wagmi";
+import { useEffect, useState } from "react";
 
 export let isValidNetwork = true;
 export let account = '';
 
 const Home: NextPage = () => {
+    const [hasMounted, setHasMounted] = useState(false)
 
+    const { isConnected } = useAccount()
+
+    useEffect(() => {
+        setHasMounted(true)
+    }, [])
 
     return (
         <>
@@ -20,30 +24,42 @@ const Home: NextPage = () => {
                 <SomeText />
 
                 <div
-                    className="w-full lg:w-3/5 text-center xl:w-2/5 h-full lg:h-96 flex flex-col lg:flex-row items-center rounded-lg overflow-hidden mt-20"
+                    className="w-full lg:w-4/5 text-center xl:w-3/5 h-full lg:h-96 flex flex-col lg:flex-row items-center rounded-lg overflow-hidden mt-20"
                 >
                     <div
-                        className="w-full w-full bg-zinc-900/[.6] backdrop-blur-md flex flex-col justify-center py-14 rounded-lg my-6 lg:mr-2 border border-solid border-slate-700">
+                        className="w-full bg-zinc-900/[.6] backdrop-blur-md flex flex-col justify-center py-8 px-6 rounded-lg my-6 lg:mr-2 border border-solid border-slate-700">
+                        {(hasMounted && !isConnected) ?
+                            <>
+                                <p
+                                    className="w-auto mt-3 mb-3 text-rose-200 font-light text-lg mb-10"
+                                >
+                                    Please connect your wallet to start <br />
+                                    minting OpenDoge Genesis Token.
+                                </p>
 
-                        <p
-                            className="w-auto mb-3 text-rose-200 font-light text-lg px-10 mb-10"
-                        >
-                            Please connect your wallet to start minting OpenDoge Genesis Token.
-                        </p>
-
-                        <div
-                            className="w-84 h-14"
-                        >
-                            <Button>Connect Wallet</Button>
-                        </div>
-
+                                <div className="flex justify-center mb-6">
+                                    <ConnectButton />
+                                </div>
+                            </>
+                            :
+                            <>
+                                <div className="flex h-full">
+                                    <div className="grow h-full bg-red-500">
+                                        Upload UI
+                                    </div>
+                                    <div className="grow h-full bg-blue-500">
+                                        Mint UI
+                                    </div>
+                                </div>
+                            </>
+                        }
                     </div>
 
                 </div>
             </div>
 
             <div
-            className="w-full flex-col flex items-center"
+                className="w-full flex-col flex items-center"
             >
                 <div
                     className="flex-col w-3/5 flex items-center w-full min-h-screen"
