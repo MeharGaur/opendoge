@@ -26,9 +26,10 @@ const Home: NextPage = () => {
             <div className="flex w-full min-h-[100vh] flex-col items-center justify-center text-white">
                 <HeroTitle />
 
+                {/* isConnected && "w-full lg:w-4/5 xl:w-3/5" */}
                 <div
                     suppressHydrationWarning
-                    className={clsx(isConnected && "w-full lg:w-4/5 xl:w-3/5", "h-full lg:h-96 flex flex-col lg:flex-row text-center items-center rounded-lg mt-20")}
+                    className={clsx("h-full lg:h-96 flex flex-col lg:flex-row text-center items-center rounded-lg mt-20")}
                 >
                     <div
                         className="w-full bg-zinc-900/[.6] backdrop-blur-md flex flex-col justify-center px-10 py-10 rounded-lg my-6 lg:mr-2 border border-solid border-slate-700">
@@ -117,12 +118,16 @@ const Home: NextPage = () => {
                         <LandingSection>
                             <>Socials</>
                             <>
-                                Now that there is the Tec-9, a crappy spray gun from South Miami. This gun is advertised as the most popular gun in American crime. Do you believe that shit? It actually says that in the little book that comes with it: the most popular gun in American crime. Like they're actually proud of that shit.
+                                Stay Up To Date With OpenDoge
 
                                 <div className="mt-5 saturate-200">
-                                    <Image src="/img/twitter.png" width="96" height="96" />
+                                    <a href="https://twitter.com/OpenDoge" target="_blank">
+                                        <Image src="/img/twitter.png" width="96" height="96"/>
+                                    </a>
                                     <div className="mx-2 inline-block"></div>
-                                    <Image src="/img/telegram.png" width="84" height="84" />
+                                    <a href="https://t.me/OpenDoge" target="_blank">
+                                        <Image src="/img/telegram.png" width="84" height="84" />
+                                    </a>
                                 </div>
                             </>
                         </LandingSection>
