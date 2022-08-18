@@ -16,7 +16,7 @@ const Layout = ({ children }: LayoutProps) => {
       className="fixed -z-[1] top-0 left-0 right-0 bottom-0 w-full flex flex-col">
         <Image src="/img/background.gif" layout="fill"></Image>
       </div>
-      <Cursor/>
+      {/* <Cursor/> */}
       
       <Header />
       <main className="wrapper">{children}</main>

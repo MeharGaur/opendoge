@@ -1,10 +1,13 @@
 import type { NextPage } from "next";
-import SomeText from "lib/components/samples/SomeText";
+import HeroTitle from "lib/components/ui/HeroTitle";
 import Button from "lib/components/ui/Button";
 import LandingSection from "lib/components/ui/LandingSection";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { useAccount, useConnect } from "wagmi";
 import { useEffect, useState } from "react";
+import Image from "next/image";
+import clsx from "clsx";
+import { Counter } from "lib/components/ui/Counter";
 
 export let isValidNetwork = true;
 export let account = '';
@@ -21,13 +24,13 @@ const Home: NextPage = () => {
     return (
         <>
             <div className="flex w-full min-h-[100vh] flex-col items-center justify-center text-white">
-                <SomeText />
+                <HeroTitle />
 
                 <div
-                    className="w-full lg:w-4/5 text-center xl:w-3/5 h-full lg:h-96 flex flex-col lg:flex-row items-center rounded-lg overflow-hidden mt-20"
+                    className={clsx(isConnected && "w-full lg:w-4/5 xl:w-3/5", "h-full lg:h-96 flex flex-col lg:flex-row text-center items-center rounded-lg mt-20")}
                 >
                     <div
-                        className="w-full bg-zinc-900/[.6] backdrop-blur-md flex flex-col justify-center py-8 px-6 rounded-lg my-6 lg:mr-2 border border-solid border-slate-700">
+                        className="w-full bg-zinc-900/[.6] backdrop-blur-md flex flex-col justify-center px-10 py-10 rounded-lg my-6 lg:mr-2 border border-solid border-slate-700">
                         {(hasMounted && !isConnected) ?
                             <>
                                 <p
@@ -44,11 +47,36 @@ const Home: NextPage = () => {
                             :
                             <>
                                 <div className="flex h-full">
-                                    <div className="grow h-full bg-red-500">
-                                        Upload UI
+                                    <div className="grow min-h-80 min-w-80 flex flex-col items-center justify-center ml-3 mr-16">
+                                        <div className="flex justify-center mb-4">
+                                            <div>0/10,000 NFTs Already Minted</div>
+                                        </div>
+
+                                        <Counter />
+
+                                        <div className="mb-5">
+                                            Cost: 420 $wDOGE
+                                        </div>
+
+
+                                        <Button>
+                                            Mint Now
+                                        </Button>
+
+                                        {/* <a href="#custom-amount-modal">
+                                            <Button>
+                                                Custom Amount
+                                            </Button>
+                                        </a> */}
                                     </div>
-                                    <div className="grow h-full bg-blue-500">
-                                        Mint UI
+
+                                    <div className="h-full">
+                                        <div className="w-80 h-80 flex flex-col items-center justify-center border-2 border-solid border-white/[0.5] opacity-[0.75] rounded-lg">
+                                            <div className="px-8 flex flex-col items-center justify-center">
+                                                <Image className="invert" src="/img/upload.png" width="80" height="80" />
+                                                <p className="mt-7">Your minted NFT will show up here</p>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </>
@@ -58,28 +86,49 @@ const Home: NextPage = () => {
                 </div>
             </div>
 
-            <div
-                className="w-full flex-col flex items-center"
-            >
-                <div
-                    className="flex-col w-3/5 flex items-center w-full min-h-screen"
-                >
-                    <LandingSection>
-                        <>About</>
-                        <>Now that there is the Tec-9, a crappy spray gun from South Miami. This gun is advertised as the most popular gun in American crime. Do you believe that shit? It actually says that in the little book that comes with it: the most popular gun in American crime. Like they're actually proud of that shit. </>
-                    </LandingSection>
+            {/* <div className="modal backdrop-blur-[3px]" id="custom-amount-modal">
+                <div className="modal-box">
+                    <h3 className="font-bold text-lg">Congratulations random Internet user!</h3>
+                    <p className="py-4">You've been selected for a chance to get one year of subscription to use Wikipedia for free!</p>
+                    <div className="modal-action">
+                        <a href="#" className="btn">Yay!</a>
+                    </div>
                 </div>
+            </div> */}
 
+
+            {(hasMounted && !isConnected) &&
                 <div
-                    className="flex-col w-3/5 flex items-center w-full min-h-screen"
+                    className="w-full flex-col flex items-center"
                 >
-                    <LandingSection>
-                        <>Socials</>
-                        <>Now that there is the Tec-9, a crappy spray gun from South Miami. This gun is advertised as the most popular gun in American crime. Do you believe that shit? It actually says that in the little book that comes with it: the most popular gun in American crime. Like they're actually proud of that shit. </>
-                    </LandingSection>
-                </div>
+                    <div
+                        className="flex-col w-3/5 flex items-center w-full min-h-screen"
+                    >
+                        <LandingSection>
+                            <>About</>
+                            <>Now that there is the Tec-9, a crappy spray gun from South Miami. This gun is advertised as the most popular gun in American crime. Do you believe that shit? It actually says that in the little book that comes with it: the most popular gun in American crime. Like they're actually proud of that shit. </>
+                        </LandingSection>
+                    </div>
 
-            </div>
+                    <div
+                        className="flex-col w-3/5 flex items-center w-full min-h-screen"
+                    >
+                        <LandingSection>
+                            <>Socials</>
+                            <>
+                                Now that there is the Tec-9, a crappy spray gun from South Miami. This gun is advertised as the most popular gun in American crime. Do you believe that shit? It actually says that in the little book that comes with it: the most popular gun in American crime. Like they're actually proud of that shit.
+
+                                <div className="mt-5 saturate-200">
+                                    <Image src="/img/twitter.png" width="96" height="96" />
+                                    <div className="mx-2 inline-block"></div>
+                                    <Image src="/img/telegram.png" width="84" height="84" />
+                                </div>
+                            </>
+                        </LandingSection>
+                    </div>
+
+                </div>
+            }
 
 
         </>

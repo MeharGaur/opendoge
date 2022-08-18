@@ -1,14 +1,16 @@
 import clsx from "clsx";
-import type { ReactNode } from "react";
+import type { MouseEventHandler, ReactNode } from "react";
 
 type ButtonProps = {
     children: ReactNode;
     className?: string;
+    onClick?: MouseEventHandler<HTMLButtonElement>
 };
 
-const Button = ({ children, className }: ButtonProps) => {
+const Button = ({ children, className, onClick = () => {} }: ButtonProps) => {
     return (
         <button
+            onClick={onClick}
             className={`btn rounded-xl border-2 border-zinc-900 bg-primary-100 font-bold text-slate-200 hover:bg-primary-200 normal-case font-medium text-xl` + className}
         >
             <span className="text-lg px-2">
