@@ -1,0 +1,85 @@
+@import "mixins";
+
+$cursor-size: 100px;
+$follow-size: 30px;
+
+$follow-color: #7a0000;
+
+
+.cursor {
+    @include cursor-base($cursor-size);
+
+    border: 3px solid $follow-color;
+
+    &>div {
+        $sideline-height: 15px;
+        $sideline-width: 3px;
+
+        position: absolute;
+        width: $sideline-width;
+        height: $sideline-height;
+        background-color: $follow-color;
+
+        &:nth-child(1) {
+            top: 0%;
+            left: 50%;
+            transform: rotate(0deg);
+        }
+
+        &:nth-child(2) {
+            top: calc(50% - 3 * $sideline-width);
+            left: calc(-1% + $sideline-height / 2);
+            transform: rotate(-90deg);
+        }
+
+        &:nth-child(3) {
+            top: calc(50% - 3 * $sideline-width);
+            left: calc(100% - $sideline-height / 2);
+            transform: rotate(90deg);
+        }
+
+        &:nth-child(4) {
+            top: calc(100% - $sideline-height);
+            left: 50%;
+            transform: rotate(0deg);
+        }
+    }
+}
+
+.follow {
+    @include cursor-base($follow-size);
+
+    &>div {
+        $sideline-height: 15px;
+        $sideline-width: 3px;
+
+        position: absolute;
+        width: $sideline-width;
+        height: $sideline-height;
+        background-color: #ff0000;
+
+        &:nth-child(1) {
+            top: 0%;
+            left: 50%;
+            transform: rotate(0deg);
+        }
+
+        &:nth-child(2) {
+            top: calc(50% - 3 * $sideline-width);
+            left: calc(-1% + $sideline-height / 2);
+            transform: rotate(-90deg);
+        }
+
+        &:nth-child(3) {
+            top: calc(50% - 3 * $sideline-width);
+            left: calc(100% - $sideline-height / 2);
+            transform: rotate(90deg);
+        }
+
+        &:nth-child(4) {
+            top: calc(100% - $sideline-height);
+            left: 50%;
+            transform: rotate(0deg);
+        }
+    }
+}
