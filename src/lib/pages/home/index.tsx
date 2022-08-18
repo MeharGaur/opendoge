@@ -5,6 +5,8 @@ import { DatasetJsonLd } from "next-seo";
 import Web3 from "web3";
 import { ChainUnknownError } from "use-wallet/dist/cjs/errors";
 import Script from "next/script";
+import Button from "lib/components/ui/Button";
+import LandingSection from "lib/components/ui/LandingSection";
 
 export let isValidNetwork = true;
 export let account = '';
@@ -21,14 +23,6 @@ const Home: NextPage = () => {
         const pendingRewardsElement = document.getElementById("pendingRewardsEth");
         pendingRewardsElement!.textContent = parseFloat(data.pendingRewards).toFixed(6);
 
-        const moonBalanceElement = document.getElementById("moon-balance");
-        moonBalanceElement!.textContent = parseFloat(data.moonBalance).toFixed(6);
-
-        const moonBurnedElement = document.getElementById("moonBurned");
-        moonBurnedElement!.textContent = parseFloat(data.moonBurned).toFixed(6);
-
-        const moonBuybackElement = document.getElementById("moonBuyback");
-        moonBuybackElement!.textContent = parseFloat(data.moonBuybacks).toFixed(6);
     }
 
     const checkNetwork = async () => {
@@ -112,114 +106,36 @@ const Home: NextPage = () => {
 
     return (
         <>
-            <div className="flex w-full min-h-[100vh] flex-col items-center justify-center gap-8 text-white">
+            <div className="flex w-full min-h-[100vh] flex-col items-center justify-center text-white">
                 <SomeText />
 
                 <div
-                    className="w-full lg:w-4/5 xl:w-3/5 h-full lg:h-96 flex flex-col lg:flex-row items-center rounded-lg overflow-hidden mt-20"
+                    className="w-full lg:w-3/5 xl:w-2/5 h-full lg:h-96 flex flex-col lg:flex-row items-center rounded-lg overflow-hidden mt-20"
                 >
                     <div
-                        className="w-full md:w-2/3 bg-zinc-900/[.7] flex flex-col justify-center pl-12 lg:pl-20 py-14 rounded-lg my-6 lg:mr-2 border border-solid border-zinc-600">
+                        className="w-full w-full bg-zinc-900/[.6] backdrop-blur-md flex flex-col justify-center pl-12 lg:pl-20 py-14 rounded-lg my-6 lg:mr-2 border border-solid border-slate-700">
 
                         <h3
                             className="w-auto mb-3 text-rose-200 font-light text-2xl"
                         >
-                            Your Pending Rewards
+                            Your Balance:
                         </h3>
 
                         <h2
                             className="w-auto mb-16 bg-gradient-to-br from-white to-orange-400 bg-clip-text text-transparent font-medium"
                         >
-                            <span id="pendingRewardsEth">0.000000</span>&nbsp;
-                            ETH
+                            <span id="pendingRewardsEth">0.00</span>&nbsp;
+                            DOGE
                         </h2>
 
                         <div
-                            className="w-52 h-14"
+                            className="w-84 h-14"
                         >
-                            {hasConnected ?
-                                <button
-                                    onClick={claimRewards}
-                                    className="btn rounded-xl w-full h-full border-2 border-zinc-900 bg-gradient-to-br from-rose-900 to-red-900 font-bold text-slate-200 hover:from-rose-200 hover:to-red-400 hover:text-red-800 normal-case font-medium text-xl"
-                                >
-                                    Claim Rewards
-                                </button>
-                                :
-                                <button onClick={connectWallet}
-                                    className="btn rounded-xl w-full h-full border-2 border-zinc-900 bg-gradient-to-br from-rose-900 to-red-900 font-bold text-slate-200 hover:from-rose-200 hover:to-red-400 hover:text-red-800 normal-case font-medium text-xl"
-                                    id="connectBtn"
-                                    ref={connectBtn}
-                                >
-                                    Connect Wallet
-                                </button>
-                            }
+                            <Button>Connect Wallet</Button>
                         </div>
 
                     </div>
 
-                    <div
-                        className="w-full md:w-2/3 lg:w-1/3 flex flex-col lg:px-3 justify-around">
-
-                        <div
-                            className="w-full bg-zinc-900/[.75] mt-2.5 rounded-lg p-4 border border-solid border-zinc-600"
-                            style={{ height: "28%" }}
-                        >
-
-                            <h5
-                                className="text-rose-200 font-normal mb-1 font-normal"
-                            >
-                                Your $MOON Balance
-                            </h5>
-
-                            <h4
-                                className="font-normal"
-                                id="moon-balance"
-                            >
-                                0.000000
-                            </h4>
-
-                        </div>
-
-
-                        <div
-                            className="w-full bg-zinc-900/[.7] my-5 rounded-lg p-4 border border-solid border-zinc-600"
-                            style={{ height: "28%" }}
-                        >
-                            <h5
-                                className="text-rose-200 font-normal mb-1 font-normal"
-                            >
-                                Total $MOON Bought Back
-                            </h5>
-
-                            <h4
-                                className="font-normal"
-                                id="moonBuyback"
-                            >
-                                0.000000
-                            </h4>
-
-                        </div>
-
-                        <div
-                            className="w-full bg-zinc-900/[.75] mb-2 rounded-lg p-4 border border-solid border-zinc-600"
-                            style={{ height: "28%" }}
-                        >
-
-                            <h5
-                                className="text-rose-200 font-normal mb-1 font-normal"
-                            >
-                                Total $MOON Burned
-                            </h5>
-
-                            <h4
-                                className="font-normal"
-                                id="moonBurned"
-                            >
-                                0.000000
-                            </h4>
-
-                        </div>
-                    </div>
                 </div>
             </div>
 
@@ -227,28 +143,39 @@ const Home: NextPage = () => {
 
 
 
+            <div
+            className="w-full flex-col flex items-center"
+            >
+                <div
+                    className="flex-col w-3/5 flex items-center w-full min-h-screen"
+                >
+                    <LandingSection>
+                        <>About</>
+                        <>Now that there is the Tec-9, a crappy spray gun from South Miami. This gun is advertised as the most popular gun in American crime. Do you believe that shit? It actually says that in the little book that comes with it: the most popular gun in American crime. Like they're actually proud of that shit. </>
+                    </LandingSection>
+                </div>
+
+
+                <div
+                    className="flex-col w-3/5 flex items-center w-full min-h-screen"
+                >
+                    <LandingSection>
+                        <>Socials</>
+                        <>Now that there is the Tec-9, a crappy spray gun from South Miami. This gun is advertised as the most popular gun in American crime. Do you believe that shit? It actually says that in the little book that comes with it: the most popular gun in American crime. Like they're actually proud of that shit. </>
+                    </LandingSection>
+                </div>
+
+
+            </div>
 
 
 
 
 
-
-
-        <div>
-            <h2>
-                About
-            </h2>
-                
-
-
-
-
-
-
-            
-        </div>
         </>
-        
+
+
+
     );
 };
 
