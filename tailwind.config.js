@@ -11,12 +11,18 @@ module.exports = {
         extend: {
           fontFamily: {
             'sans': ['pixel', ...defaultTheme.fontFamily.sans],
+            'body': ['sgr', ...defaultTheme.fontFamily.sans],
           },
           colors: {
             sand: {
-                100: "#dcc987",
-                900: "#6e4d58",
+              100: "#dcc987",
+              900: "#6e4d58",
             },
+            primary: {
+              100: "#64578a",
+              200: "#86507b"
+
+            }
           }
         },
       },

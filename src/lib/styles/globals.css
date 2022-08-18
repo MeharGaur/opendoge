@@ -37,6 +37,13 @@
     font-display: swap;
   }
 
+  @font-face {
+    font-family: 'sgr';
+    src: url('/fonts/sgr.woff2') format('woff2');
+    font-style: normal;
+    font-display: swap;
+}
+
   :root, [data-theme] {
     background-color: #6e4d58;
     /* cursor: cell; */

@@ -15,7 +15,7 @@ const LandingSection = ({ children, className }: LandingSectionProps) => {
             {Children.toArray(children)[0]}
         </h2>
         <div
-            className="w-full h-full bg-zinc-900/[.6] backdrop-blur-md p-8 my-6">
+            className="w-full rounded-lg h-full bg-zinc-900/[.6] font-body backdrop-blur-md p-8 my-6 border border-solid border-slate-700">
             <p>
                 {Children.toArray(children)[1]}
             </p>

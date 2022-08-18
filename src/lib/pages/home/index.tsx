@@ -125,7 +125,7 @@ const Home: NextPage = () => {
                             className="w-auto mb-16 bg-gradient-to-br from-white to-orange-400 bg-clip-text text-transparent font-medium"
                         >
                             <span id="pendingRewardsEth">0.00</span>&nbsp;
-                            DOGE
+                            WDOGE
                         </h2>
 
                         <div
