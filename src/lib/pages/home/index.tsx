@@ -7,7 +7,7 @@ import { useAccount, useConnect } from "wagmi";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import clsx from "clsx";
-import { Counter } from "lib/components/ui/Counter";
+import { Counter } from "lib/components/ui/counter";
 
 export let isValidNetwork = true;
 export let account = '';
@@ -27,6 +27,7 @@ const Home: NextPage = () => {
                 <HeroTitle />
 
                 <div
+                    suppressHydrationWarning
                     className={clsx(isConnected && "w-full lg:w-4/5 xl:w-3/5", "h-full lg:h-96 flex flex-col lg:flex-row text-center items-center rounded-lg mt-20")}
                 >
                     <div
