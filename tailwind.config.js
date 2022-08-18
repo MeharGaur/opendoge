@@ -6,7 +6,16 @@ module.exports = {
         // require("@tailwindcss/typography"),
         require("daisyui")
     ],
-
+    theme: {
+        extend: {
+          colors: {
+            sand: {
+                100: "#dcc987",
+                900: "#6e4d58",
+            },
+          }
+        },
+      },
     daisyui: {
         themes: ["synthwave"]
     }

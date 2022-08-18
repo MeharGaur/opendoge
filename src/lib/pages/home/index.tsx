@@ -112,7 +112,7 @@ const Home: NextPage = () => {
 
     return (
         <>
-            <div className="flex w-full min-h-[60vh] flex-col items-center justify-center gap-8 text-white">
+            <div className="flex w-full min-h-[100vh] flex-col items-center justify-center gap-8 text-white">
                 <SomeText />
 
                 <div
@@ -222,7 +222,33 @@ const Home: NextPage = () => {
                     </div>
                 </div>
             </div>
+
+
+
+
+
+
+
+
+
+
+
+
+        <div>
+            <h2>
+                About
+            </h2>
+                
+
+
+
+
+
+
+            
+        </div>
         </>
+        
     );
 };
 

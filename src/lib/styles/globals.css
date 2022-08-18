@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+/* do not format this file, otherwise it breaks */
+
 @layer base {
   h1 {
     @apply text-4xl font-bold md:text-5xl;
@@ -26,21 +28,18 @@
   .wrapper {
     @apply mx-auto p-6 sm:p-8;
     width: 100%;
-    /* max-width: 48rem; */
   }
 
-  canvas {
-    opacity: 0.5;
+  @font-face {
+    font-family: 'pixel';
+    src: url('/fonts/pixel.woff2') format('woff2');
+    font-style: normal;
+    font-display: swap;
   }
-  
+
   :root, [data-theme] {
-    background-color: black;
+    background-color: #6e4d58;
     /* cursor: cell; */
 }
-
-/* button, img, a {
-    cursor: cell !important;
-} */
-
 
 }
