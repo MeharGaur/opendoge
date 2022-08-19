@@ -17,7 +17,7 @@ export let isValidNetwork = true;
 export let account = '';
 
 let mintAmount = 0;
-const contractAddress = "0x538691a98248d81c6448d0f42c57e407785d63ec";
+const contractAddress = "0x538691A98248D81C6448D0F42C57E407785d63EC";
 
 async function mintNow (address: string | undefined) {
 
@@ -63,7 +63,7 @@ async function mintNow (address: string | undefined) {
         }).then(async (tx: string) => {
 
             setTimeout(() => {
-                prompt(`✅ 🎉 You have successfully withdrawn your rewards. Please allow around 30 seconds for the transaction to process. You can now close this tab. \n \n Transaction ID: `, tx)
+                prompt(`✅ 🎉 You have successfully minted your NFT(s). Please allow around 30 seconds for the transaction to process. You can now close this tab. \n \n Transaction ID: `, tx)
                 location.reload()
             }, 100)
         })
@@ -136,12 +136,7 @@ const Home: NextPage = () => {
                                     </div>
 
                                     <div className="h-full">
-                                        <div className="w-80 h-80 flex flex-col items-center justify-center border border-solid border-white/[0.5] opacity-[0.4] rounded-lg">
-                                            <div className="px-8 flex flex-col items-center justify-center">
-                                                <Image className="invert" src="/img/upload.png" width="80" height="80" />
-                                                <p className="mt-7">Your minted NFTs will show up here</p>
-                                            </div>
-                                        </div>
+                                        <Image className="rounded-lg" width="320" height="320" src="/img/minted.gif"></Image>
                                     </div>
                                 </div>
                             </>
