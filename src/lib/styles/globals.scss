@@ -53,4 +53,33 @@
     scroll-behavior: smooth;
     scroll-padding-top: 130px;
   }
+
+  a {
+    position: relative;
+    color: inherit;
+    text-decoration: none;
+
+    &::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        right: 0;
+        width: 100%;
+        height: 2px;
+        background-color: rgba(255,255,255, 0.7);
+        // border-radius: 50%;
+        pointer-events: none;
+
+        transform: scaleX(0);
+        transform-origin: 100% 100%;
+        transition: transform 300ms 0s ease;
+    }
+
+    &:hover::after {
+        transform: scaleX(1);
+        transform-origin: 0% 100%;
+        transition: transform 325ms 0.1s ease;
+    }
+}
 }

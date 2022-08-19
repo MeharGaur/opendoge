@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useAccount } from "wagmi";
-import NavLink from "../ui/NavLink";
+import NavLink from "../ui/nav-link";
 
 const Header = () => {
     const router = useRouter()

@@ -2,7 +2,7 @@ import { DefaultSeo } from "next-seo";
 import type { AppProps } from "next/app";
 import defaultSEOConfig from "../../next-seo.config";
 import Layout from "lib/components/layout";
-import "lib/styles/globals.css";
+import "lib/styles/globals.scss";
 import '@rainbow-me/rainbowkit/styles.css';
 import { jsonRpcProvider } from 'wagmi/providers/jsonRpc';
 // import { Chain } from "wagmi";
