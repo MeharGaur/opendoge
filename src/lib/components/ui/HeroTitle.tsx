@@ -1,8 +1,8 @@
 import clsx from "clsx"
-import { useEffect, useState } from "react";
+import { Children, ReactNode, useEffect, useState } from "react";
 import { useAccount } from "wagmi";
 
-const HeroTitle = () => {
+const HeroTitle = ({ children, className }: { children: ReactNode, className: Array<string | boolean> }) => {
     const { isConnected } = useAccount()
 
     const [hasMounted, setHasMounted] = useState(false)
@@ -11,16 +11,16 @@ const HeroTitle = () => {
 
     if (hasMounted) {
         return (
-            <div className={clsx(isConnected && "-mb-4", !isConnected && "-mb-16", "text-center -mt-10")}>
+            <div className={clsx(...className, "text-center -mt-10")}>
                 <h1 className="text-rose-200 text-5xl font-bold"
                     style={{ textShadow: "0px 6px 8px rgba(0,0,0,1)" }}
                 >
-                    OpenDoge
+                    {Children.toArray(children)[0]}
                 </h1>
                 <p className="text-sm text-rose-100 mt-5 font-light"
                     style={{ textShadow: "0px 6px 10px rgba(0,0,0,1)" }}
                 >
-                    The Premier NFT Marketplace On Dogechain.
+                    {Children.toArray(children)[1]}
                 </p>
             </div>
         )

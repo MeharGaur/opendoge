@@ -21,14 +21,21 @@ const Home: NextPage = () => {
     return (
         <>
             <div className="flex w-full min-h-[100vh] flex-col items-center justify-center text-white">
-                <HeroTitle />
+                <HeroTitle className={[isConnected && "-mb-2", !isConnected && "-mb-16"]}>
+                    <>
+                        OpenDoge
+                    </>
+                    <>
+                        The Premier NFT Marketplace On Dogechain.
+                    </>
+                </HeroTitle>
 
                 <div
                     suppressHydrationWarning
                     className={clsx("h-full lg:h-96 flex flex-col lg:flex-row text-center items-center rounded-lg mt-20")}
                 >
                     <div
-                        className="w-full bg-zinc-900/[.6] backdrop-blur-md flex flex-col justify-center px-10 py-10 rounded-lg my-6 lg:mr-2 border border-solid border-slate-700">
+                        className="w-full bg-zinc-900/[.7] backdrop-blur-lg flex flex-col justify-center px-10 py-10 rounded-lg my-6 lg:mr-2 border border-solid border-slate-700">
                         {(hasMounted && !isConnected) ?
                             <>
                                 <p
@@ -80,15 +87,6 @@ const Home: NextPage = () => {
                 </div>
             </div>
 
-            {/* <div className="modal backdrop-blur-[3px]" id="custom-amount-modal">
-                <div className="modal-box">
-                    <h3 className="font-bold text-lg">Congratulations random Internet user!</h3>
-                    <p className="py-4">You've been selected for a chance to get one year of subscription to use Wikipedia for free!</p>
-                    <div className="modal-action">
-                        <a href="#" className="btn">Yay!</a>
-                    </div>
-                </div>
-            </div> */}
 
 
             {(hasMounted && !isConnected) &&
@@ -101,13 +99,15 @@ const Home: NextPage = () => {
                         <LandingSection>
                             <><span id="about">About</span></>
                             <>
-                                <p className="mb-4">OpenDoge is the premier P2P NFT marketplace built entirely on Dogechain. A massive market exists for ERC-721 & ERC-1155 NFTs on Ethereum Mainnet, OpenDoge seeks to transition this existing market onto Dogechain, where fees are lower and transactions are quicker.</p>
+                                <div className="text-left px-8 py-3">
+                                    <p className="mb-4">OpenDoge is the premier P2P NFT marketplace built entirely on Dogechain. A massive market exists for ERC-721 & ERC-1155 NFTs on Ethereum Mainnet, OpenDoge seeks to transition this existing market onto Dogechain, where fees are lower and transactions are quicker.</p>
 
-                                <p className="mb-4">Contrary to Opensea, OpenDoge adopts a decentralized and open model, where we redistribute 85% of all marketplace fees and revenue back OpenDoge users and holders of OpenDoge's Genesis Token.</p>
+                                    <p className="mb-4">Contrary to Opensea, OpenDoge adopts a decentralized and open model, where we redistribute 85% of all marketplace fees and revenue back OpenDoge users and holders of OpenDoge's Genesis Token.</p>
 
-                                <p className="mb-4">ODGT (OpenDoge's Genesis Token) is an NFT which provides passive rewards back to the holders. 75% of all fees generated are provided back to the holders along with providing holders with voting rights.</p>
+                                    <p className="mb-4">ODGT (OpenDoge's Genesis Token) is an NFT which provides passive rewards back to the holders. 75% of all fees generated are provided back to the holders along with providing holders with voting rights.</p>
 
-                                <p className="mb-4">ODGT will be the first NFT tradable on OpenDoge's Marketplace post mint.</p>
+                                    <p className="mb-2">ODGT will be the first NFT tradable on OpenDoge's Marketplace post mint.</p>
+                                </div>
                             </>
                         </LandingSection>
                     </div>
@@ -121,7 +121,7 @@ const Home: NextPage = () => {
                             <>
                                 Stay Up To Date With OpenDoge
 
-                                <div className="mt-6 saturate-200">
+                                <div className="mt-8 mx-12 flex flex-row saturate-200">
                                     <a href="https://twitter.com/OpenDoge" target="_blank" className="group">
                                         <Image src="/img/twitter.png" width="96" height="96" className="overflow-visible group-hover:-translate-y-1" />
                                     </a>

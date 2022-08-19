@@ -92,7 +92,7 @@ const myTheme = merge(darkTheme({
     },
     colors: {
         connectButtonBackground: "transparent",
-        connectButtonInnerBackground: "transparent",
+        connectButtonInnerBackground: "rgba(255,255,255, 0.085)",
         modalBackground: "#2C1B69",
         modalBackdrop: "#2C1B6955"
     }
@@ -107,6 +107,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
                 chains={chains} modalSize="compact"
                 theme={myTheme}
                 avatar={CustomAvatar}
+                coolMode
             >
                 <Layout>
                     <DefaultSeo {...defaultSEOConfig} />
