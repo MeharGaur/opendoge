@@ -6,14 +6,11 @@ require("@nomiclabs/hardhat-etherscan");
  * @type import('hardhat/config').HardhatUserConfig
  */
 module.exports = {
-    solidity: "0.8.7",
+    solidity: "0.8.9",
     networks: {
-        hardhat: {
-            chainId: 31337
-        },
-        ropsten: {
-            url: "https://ropsten.infura.io/v3/37d2c4c42b2b44bdb26cf24ff3936d10",
-            accounts: ['0x9f123b47a8d14f22e3073c3eb5ed30ba6247a1a725de11c375eab7cea48923a7']
+        doge_testnet: {
+            url: "https://rpc-testnet.dogechain.dog",
+            accounts: ['6ffdd6c974d4b1a1c71ec196d15941f7c954b3e781039483fba6d406a4b020e9']
         }
     }
 }
