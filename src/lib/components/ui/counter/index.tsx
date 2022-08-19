@@ -3,12 +3,16 @@ import { spring } from "svelte/motion"
 import clsx from "clsx"
 import { useEffect, useState } from "react"
 
+export const count = {value:0}
 
-export function Counter() {
-    let count = 0
+let customAmount = 0
+
+export function Counter({ onChange }:{ onChange:Function }) {
     const displayedCount = spring(0)
 
     const [hasMounted, setHasMounted] = useState(false)
+
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false)
 
     useEffect(() => setHasMounted(true), [])
 
@@ -23,8 +27,14 @@ export function Counter() {
     })
 
     function updateCount(direction: number) {
-        count += direction
-        displayedCount.set(count)
+        count.value += direction
+        updateStore(count.value)
+    }
+
+    function updateStore(amount: number) {
+        displayedCount.set(amount)
+        onChange(amount)
+        setIsDropdownOpen(false)
     }
 
     return (
@@ -45,9 +55,9 @@ export function Counter() {
                         </div>
                     </div>
                     
-                    <div tabIndex={0} className={clsx(styles.counter__dropdown, "dropdown-content menu bg-zinc-900/[0.9] mt-1 rounded-lg w-80 h-20 flex flex-row")}>
-                        <input type="number" min="0" max="10000" placeholder="Type Amount" className="m-3 input h-14 bg-transparent w-full h-full text-xl rounded-sm" />
-                        <button className="btn btn-sm h-[100%] rounded-none rounded-r-lg">
+                    <div tabIndex={0} className={clsx(isDropdownOpen&&"scale-0", styles.counter__dropdown, "dropdown-content menu bg-zinc-900/[0.9] mt-2 rounded-lg w-80 h-20 flex flex-row")}>
+                        <input onBlur={(event) => customAmount=parseInt(event.target.value)} type="number" min="0" max="10000" placeholder="Type Amount" className="m-3 input h-14 bg-transparent w-full h-full text-xl rounded-sm" />
+                        <button onClick={() => updateStore(customAmount)} className="btn btn-sm h-[100%] rounded-none rounded-r-lg">
                             <span className="text-sm">OK</span>
                         </button>
                     </div>
@@ -62,8 +72,6 @@ export function Counter() {
         </div>
     )
 }
-
-
 
 
 function modulo(n: number, m: number = 1) {

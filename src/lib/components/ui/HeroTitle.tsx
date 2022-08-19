@@ -20,7 +20,7 @@ const HeroTitle = () => {
                 <p className="text-sm text-rose-100 mt-5 font-light"
                     style={{ textShadow: "0px 6px 10px rgba(0,0,0,1)" }}
                 >
-                    The premier NFT marketplace on Dogechain.
+                    The Premier NFT Marketplace On Dogechain.
                 </p>
             </div>
         )

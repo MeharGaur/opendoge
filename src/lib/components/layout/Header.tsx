@@ -15,10 +15,10 @@ const Header = () => {
                     </div>
                     <div
                         className="justify-self-center">
-                        <NavLink>Mint</NavLink>
-                        <NavLink>About</NavLink>
-                        <NavLink>Socials</NavLink>
-                        <NavLink>Marketplace</NavLink>
+                        <NavLink href="#">Mint</NavLink>
+                        <NavLink href="#About">About</NavLink>
+                        <NavLink href="#Socials">Socials</NavLink>
+                        <NavLink href="#">Marketplace</NavLink>
                     </div>
 
                     <ConnectButton />

@@ -49,4 +49,8 @@
     /* cursor: cell; */
 }
 
+  html, body {
+    scroll-behavior: smooth;
+    scroll-padding-top: 130px;
+  }
 }

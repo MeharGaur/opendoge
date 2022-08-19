@@ -7,7 +7,7 @@ import { useAccount, useConnect } from "wagmi";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import clsx from "clsx";
-import { Counter } from "lib/components/ui/counter";
+import { Counter, count } from "lib/components/ui/counter";
 
 export let isValidNetwork = true;
 export let account = '';
@@ -16,6 +16,8 @@ const Home: NextPage = () => {
     const [hasMounted, setHasMounted] = useState(false)
 
     const { isConnected } = useAccount()
+
+    const [mintAmount, setMintAmount] = useState(0)
 
     useEffect(() => {
         setHasMounted(true)
@@ -54,10 +56,10 @@ const Home: NextPage = () => {
                                             <div>0/10,000 NFTs Already Minted</div>
                                         </div>
 
-                                        <Counter />
+                                        <Counter onChange={(amount:number) => setMintAmount(amount)}/>
 
                                         <div className="mb-5">
-                                            Cost: 420 $wDOGE
+                                            Cost: {mintAmount*420} $wDOGE
                                         </div>
 
 
@@ -65,11 +67,6 @@ const Home: NextPage = () => {
                                             Mint Now
                                         </Button>
 
-                                        {/* <a href="#custom-amount-modal">
-                                            <Button>
-                                                Custom Amount
-                                            </Button>
-                                        </a> */}
                                     </div>
 
                                     <div className="h-full">
@@ -104,20 +101,25 @@ const Home: NextPage = () => {
                     className="w-full flex-col flex items-center"
                 >
                     <div
-                        className="flex-col w-3/5 flex items-center w-full min-h-screen"
+                        className="flex-col w-3/5 flex items-center w-full mb-[150px]"
                     >
                         <LandingSection>
-                            <>About</>
+                            <><span id="About">About</span></>
                             <>
-                                <p className="mb-4">OpenDoge is the premier P2P NFT marketplace built entirely on Dogechain. A massive market exists for ERC-721 NFTs on Ethereum Mainnet, OpenDoge seeks to transition this existing market onto Dogechain, where transaction fees are lower and speeds are higher.</p>
+                                <p className="mb-4">OpenDoge is the premier P2P NFT marketplace built entirely on Dogechain. A massive market exists for ERC-721 & ERC-1155 NFTs on Ethereum Mainnet, OpenDoge seeks to transition this existing market onto Dogechain, where fees are lower and transactions are quicker.</p>
 
-                                <p>Contrary to Opensea, OpenDoge adopts a decentralized and open model, where we redistribute 85% of all marketplace fees and revenue back to holders of the OpenDoge Genesis Token.</p>
+                                <p className="mb-4">Contrary to Opensea, OpenDoge adopts a decentralized and open model, where we redistribute 85% of all marketplace fees and revenue back OpenDoge users and holders of OpenDoge's Genesis Token.</p>
+
+                                <p className="mb-4">ODGT (OpenDoge's Genesis Token) is an NFT which provides passive rewards back to the holders. 75% of all fees generated are provided back to the holders along with providing holders with voting rights.</p>
+
+                                <p className="mb-4">ODGT will be the first NFT tradable on OpenDoge's Marketplace post mint.</p>
                             </>
                         </LandingSection>
                     </div>
 
                     <div
-                        className="flex-col w-3/5 flex items-center w-full min-h-screen"
+                        className="flex-col w-3/5 flex items-center w-full mb-[80px]"
+                        id="Socials"
                     >
                         <LandingSection>
                             <>Socials</>
