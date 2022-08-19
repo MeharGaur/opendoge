@@ -49,6 +49,7 @@
     "critters": "^0.0.16",
     "cross-env": "^7.0.3",
     "daisyui": "^2.20.0",
+    "erc721a": "^4.2.2",
     "eslint": "^8.20.0",
     "eslint-config-next": "^12.2.3",
     "eslint-config-sznm": "^0.2.1",
