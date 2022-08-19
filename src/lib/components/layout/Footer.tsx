@@ -6,9 +6,7 @@ const Footer = () => {
     const { isConnected } = useAccount()
 
     const [hasMounted, setHasMounted] = useState(false)
-    useEffect(() => {
-        setHasMounted(true)
-    }, [])
+    useEffect(() => setHasMounted(true), [])
 
     return (
         <footer className="wrapper bottom-0 left-0 right-0 text-violet-3 font-light text-sm">

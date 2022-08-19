@@ -8,9 +8,7 @@ const Header = () => {
     const { isConnected } = useAccount()
     
     const [hasMounted, setHasMounted] = useState(false)
-    useEffect(() => {
-        setHasMounted(true)
-    }, [])
+    useEffect(() => setHasMounted(true), [])
 
     return (
         <>

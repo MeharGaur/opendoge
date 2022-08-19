@@ -11,9 +11,6 @@ function CounterComponent({ onChange }: { onChange: Function }) {
     const displayedCount = spring(0)
 
     const [hasMounted, setHasMounted] = useState(false)
-
-    const [isDropdownOpen, setIsDropdownOpen] = useState(false)
-
     useEffect(() => setHasMounted(true), [])
 
     displayedCount.subscribe((value) => {
@@ -28,10 +25,18 @@ function CounterComponent({ onChange }: { onChange: Function }) {
 
 
     function updateCount(direction: number) {
+        if (direction == -1 && count <= 0) {
+            return
+        }
+
         updateStore(count + direction)
     }
 
     function updateStore(amount: number) {
+        if (Math.sign(amount) == -1) {
+            return
+        }
+        
         count = amount
 
         displayedCount.set(count)

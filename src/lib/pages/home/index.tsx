@@ -13,13 +13,10 @@ export let isValidNetwork = true;
 export let account = '';
 
 const Home: NextPage = () => {
-    const [hasMounted, setHasMounted] = useState(false)
-
     const { isConnected } = useAccount()
 
-    useEffect(() => {
-        setHasMounted(true)
-    }, [])
+    const [hasMounted, setHasMounted] = useState(false)
+    useEffect(() => setHasMounted(true), [])
 
     return (
         <>
@@ -148,10 +145,13 @@ const Home: NextPage = () => {
     );
 };
 
+
+// This must be outside the Home component
 function counterOnChange(amount: number) {
     const el = document.getElementById("wdogeCost")!
 
     el.textContent = String(amount * 420)
 }
+
 
 export default Home;
