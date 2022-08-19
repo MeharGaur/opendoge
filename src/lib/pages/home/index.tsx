@@ -9,12 +9,73 @@ import Image from "next/image";
 import clsx from "clsx";
 import { Counter } from "lib/components/ui/counter";
 import { NextSeo } from "next-seo";
+import { getContractAddress } from "ethers/lib/utils";
+import Web3 from "web3";
+import BigNum from "bn.js";
 
 export let isValidNetwork = true;
 export let account = '';
 
+let mintAmount = 0;
+const contractAddress = "0x538691a98248d81c6448d0f42c57e407785d63ec";
+
+async function mintNow (address: string | undefined) {
+
+    if (mintAmount <= 0) {
+        alert("You must mint at least 1 NFT.")
+        return;
+    }
+
+    if (!Number.isInteger(mintAmount)) {
+        alert("Mint amount must be an integer (no decimals).")
+        return;
+    }
+
+    if (typeof address == "undefined") {
+        alert("You must connect your wallet to mint NFTs.")
+        return;
+    }
+
+    const wDogeAmount = 420*mintAmount;
+    const wDogeWei = Web3.utils.toWei(wDogeAmount.toString(), 'ether')
+    // value = 420*mintamount in HEX
+    // raw hex data for transaction += mintAmount in HEX
+
+    const originalDataString = "0xa0712d680000000000000000000000000000000000000000000000000000000000000000"
+    const mintAmountHex = mintAmount.toString(16)
+    const trimmedDataString = originalDataString.substring(0, originalDataString.length - mintAmountHex.length + 1)
+    const finalDataString = trimmedDataString + mintAmountHex
+    console.log(finalDataString, "final data string")
+
+    const tx = {
+        from: address,
+        to: contractAddress,
+        value: parseInt(wDogeWei).toString(16),
+        data: "0xa0712d6800000000000000000000000000000000000000000000000000000000000000004",
+    }
+
+    // @ts-ignore
+    try {
+        // @ts-ignore
+        const txHash = await ethereum.request({
+            method: "eth_sendTransaction",
+            params: [tx],
+        }).then(async (tx: string) => {
+
+            setTimeout(() => {
+                prompt(`✅ 🎉 You have successfully withdrawn your rewards. Please allow around 30 seconds for the transaction to process. You can now close this tab. \n \n Transaction ID: `, tx)
+                location.reload()
+            }, 100)
+        })
+    } catch (error: any) {
+        console.log(error)
+        alert(error.message)
+    }
+
+} 
+
 const Home: NextPage = () => {
-    const { isConnected } = useAccount()
+    const { isConnected, address } = useAccount()
 
     const [hasMounted, setHasMounted] = useState(false)
     useEffect(() => setHasMounted(true), [])
@@ -68,7 +129,7 @@ const Home: NextPage = () => {
                                         </div>
 
 
-                                        <Button>
+                                        <Button onClick={() => mintNow(address)}>
                                             Mint Now
                                         </Button>
 
@@ -158,6 +219,7 @@ function counterOnChange(amount: number) {
     const el = document.getElementById("wdogeCost")!
 
     el.textContent = String(amount * 420)
+    mintAmount = amount
 }
 
 
