@@ -1,13 +1,19 @@
 import styles from "./index.module.scss"
 import { spring } from "svelte/motion"
+import clsx from "clsx"
+import { useEffect, useState } from "react"
 
 
 export function Counter() {
     let count = 0
     const displayedCount = spring(0)
 
+    const [hasMounted, setHasMounted] = useState(false)
+
+    useEffect(() => setHasMounted(true), [])
+
     displayedCount.subscribe((value) => {
-        if (typeof window != "undefined") {
+        if (hasMounted) {
             const digits = document.getElementById('counterDigits')!
 
             digits.style.transform = `translate(0, ${100 * modulo(value)}%)`
@@ -22,22 +28,32 @@ export function Counter() {
     }
 
     return (
-        <div className="w-full h-32 bg-blue-500 mb-8">
+        <div className="w-full mb-8">
             <div className={styles.counter}>
-                <button onClick={() => updateCount(-1)} aria-label="Decrease the counter by one">
+                <button onClick={() => updateCount(-1)} className={clsx(styles.counter__button, "border border-solid border-white/[0.3] rounded-lg")} aria-label="Decrease the counter by one">
                     <svg aria-hidden="true" viewBox="0 0 1 1">
                         <path d="M0,0.5 L1,0.5" />
                     </svg>
                 </button>
 
-                <div className={styles.counterViewport}>
-                    <div id="counterDigits" className={styles.counterDigits}>
-                        <strong className={styles.hidden} aria-hidden="true">0</strong>
-                        <strong>0</strong>
+                <div className="dropdown">
+                    <div tabIndex={0} className={clsx(styles.counterViewport, "pl-1.5 pt-1.5 rounded-lg")}>
+                        <div className={clsx(styles.counterViewport__hover, "absolute top-0 right-0 bottom-0 left-[7.5%] w-[85%] h-full rounded-lg")}></div>
+                        <div id="counterDigits" className={styles.counterDigits}>
+                            <strong className={styles.hidden} aria-hidden="true">0</strong>
+                            <strong>0</strong>
+                        </div>
+                    </div>
+                    
+                    <div tabIndex={0} className={clsx(styles.counter__dropdown, "dropdown-content menu bg-zinc-900/[0.9] mt-1 rounded-lg w-80 h-20 flex flex-row")}>
+                        <input type="number" min="0" max="10000" placeholder="Type Amount" className="m-3 input h-14 bg-transparent w-full h-full text-xl" />
+                        <button className="btn btn-sm h-[100%] rounded-none rounded-r-lg">
+                            <span className="text-sm">OK</span>
+                        </button>
                     </div>
                 </div>
 
-                <button onClick={() => updateCount(1)} aria-label="Increase the counter by one">
+                <button onClick={() => updateCount(1)} className={clsx(styles.counter__button, "border border-solid border-white/[0.3] rounded-lg")} aria-label="Increase the counter by one">
                     <svg aria-hidden="true" viewBox="0 0 1 1">
                         <path d="M0,0.5 L1,0.5 M0.5,0 L0.5,1" />
                     </svg>

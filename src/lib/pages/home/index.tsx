@@ -49,8 +49,8 @@ const Home: NextPage = () => {
                             :
                             <>
                                 <div className="flex h-full">
-                                    <div className="grow min-h-80 min-w-80 flex flex-col items-center justify-center ml-3 mr-16">
-                                        <div className="flex justify-center mb-4">
+                                    <div className="grow min-h-80 min-w-80 flex flex-col items-center justify-center ml-3 mr-20">
+                                        <div className="flex justify-center mb-6 -mt-1">
                                             <div>0/10,000 NFTs Already Minted</div>
                                         </div>
 
@@ -108,7 +108,11 @@ const Home: NextPage = () => {
                     >
                         <LandingSection>
                             <>About</>
-                            <>Now that there is the Tec-9, a crappy spray gun from South Miami. This gun is advertised as the most popular gun in American crime. Do you believe that shit? It actually says that in the little book that comes with it: the most popular gun in American crime. Like they're actually proud of that shit. </>
+                            <>
+                                <p className="mb-4">OpenDoge is the premier P2P NFT marketplace built entirely on Dogechain. A massive market exists for ERC-721 NFTs on Ethereum Mainnet, OpenDoge seeks to transition this existing market onto Dogechain, where transaction fees are lower and speeds are higher.</p>
+
+                                <p>Contrary to Opensea, OpenDoge adopts a decentralized and open model, where we redistribute 85% of all marketplace fees and revenue back to holders of the OpenDoge Genesis Token.</p>
+                            </>
                         </LandingSection>
                     </div>
 
@@ -122,7 +126,7 @@ const Home: NextPage = () => {
 
                                 <div className="mt-5 saturate-200">
                                     <a href="https://twitter.com/OpenDoge" target="_blank">
-                                        <Image src="/img/twitter.png" width="96" height="96"/>
+                                        <Image src="/img/twitter.png" width="96" height="96" />
                                     </a>
                                     <div className="mx-2 inline-block"></div>
                                     <a href="https://t.me/OpenDoge" target="_blank">

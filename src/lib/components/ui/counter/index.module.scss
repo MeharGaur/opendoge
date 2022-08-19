@@ -1,58 +1,69 @@
 .counter {
     display: flex;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    margin: 1rem 0;
-}
-
-.counter button {
-    width: 2em;
-    padding: 0;
-    display: flex;
-    align-items: center;
     justify-content: center;
-    border: 0;
-    background-color: transparent;
-    touch-action: manipulation;
-    color: black;
-    font-size: 2rem;
+    align-items: center;
+    // border-top: 1px solid rgba(0, 0, 0, 0.1);
+    // border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    margin: 1rem 0;
 
-    svg {
-        width: 35%;
-        height: 35%;
+    &__button {
+        width: 2em;
+        height: 1.5em;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: transparent;
+        touch-action: manipulation;
+        font-size: 2rem;
+
+        &:hover {
+            background-color: rgba(255,255,255, 0.3);
+        }
     
-        path {
-            vector-effect: non-scaling-stroke;
-            stroke-width: 4px;
-            stroke: white;
+        svg {
+            width: 35%;
+            height: 35%;
+        
+            path {
+                vector-effect: non-scaling-stroke;
+                stroke-width: 4px;
+                stroke: white;
+            }
         }
     }
-}
 
-.counter button:hover {
-    background-color: grey;
+    &__dropdown {
+        box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(20px);
+    }
 }
 
 
 
 .counterViewport {
-    width: 8em;
+    width: 12em;
     height: 4em;
     overflow: hidden;
     text-align: center;
     position: relative;
-}
+    cursor: pointer;
 
-.counterViewport strong {
-    position: absolute;
-    display: flex;
-    width: 100%;
-    height: 100%;
-    font-weight: 400;
-    color: white;
-    font-size: 4rem;
-    align-items: center;
-    justify-content: center;
+    &:hover &__hover {
+        background-color: rgba(255,255,255, 0.3);
+    }
+
+    strong {
+        position: absolute;
+        display: flex;
+        width: 100%;
+        height: 100%;
+        font-weight: 400;
+        color: white;
+        font-size: 4rem;
+        align-items: center;
+        justify-content: center;
+    }
 }
 
 .counterDigits {
