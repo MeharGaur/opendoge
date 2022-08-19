@@ -16,9 +16,10 @@
         background-color: transparent;
         touch-action: manipulation;
         font-size: 2rem;
+        transition: 200ms background-color ease;
 
         &:hover {
-            background-color: rgba(255,255,255, 0.3);
+            background-color: rgba(255,255,255, 0.2);
         }
     
         svg {
@@ -49,8 +50,12 @@
     position: relative;
     cursor: pointer;
 
+    &__hover {
+        transition: 200ms background-color ease;
+    }
+
     &:hover &__hover {
-        background-color: rgba(255,255,255, 0.3);
+        background-color: rgba(255,255,255, 0.165);
     }
 
     strong {

@@ -94,7 +94,7 @@ const myTheme = merge(darkTheme({
         connectButtonBackground: "transparent",
         connectButtonInnerBackground: "rgba(255,255,255, 0.085)",
         modalBackground: "#2C1B69",
-        modalBackdrop: "#2C1B6955"
+        modalBackdrop: "#2C1B6955",
     }
 } as Theme);
 

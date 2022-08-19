@@ -99,14 +99,18 @@ const Home: NextPage = () => {
                         <LandingSection>
                             <><span id="about">About</span></>
                             <>
-                                <div className="text-left px-8 py-3">
-                                    <p className="mb-4">OpenDoge is the premier P2P NFT marketplace built entirely on Dogechain. A massive market exists for ERC-721 & ERC-1155 NFTs on Ethereum Mainnet, OpenDoge seeks to transition this existing market onto Dogechain, where fees are lower and transactions are quicker.</p>
+                                <div className="text-left px-8 py-3 leading-[1.8]">
+                                    <h3 className="mb-5 font-sans">Marketplace</h3>
+                                    <p className="mb-5">OpenDoge is the premier P2P NFT marketplace built entirely on Dogechain. A massive market exists for ERC-721 & ERC-1155 NFTs on Ethereum Mainnet. OpenDoge seeks to transition this existing market onto Dogechain, where <span className="font-black bg-base-100/[0.7] px-2 py-0.5 rounded-md">fees are lower</span> and <span className="font-black bg-base-100/[0.7] px-2 py-0.5 rounded-md">transactions are quicker.</span></p>
 
-                                    <p className="mb-4">Contrary to Opensea, OpenDoge adopts a decentralized and open model, where we redistribute 85% of all marketplace fees and revenue back OpenDoge users and holders of OpenDoge's Genesis Token.</p>
+                                    <p className="">Contrary to Opensea, OpenDoge adopts a decentralized and open model, where we redistribute 75% of all marketplace fees and revenue back OpenDoge users and holders of OpenDoge's Genesis Token.</p>
 
-                                    <p className="mb-4">ODGT (OpenDoge's Genesis Token) is an NFT which provides passive rewards back to the holders. 75% of all fees generated are provided back to the holders along with providing holders with voting rights.</p>
+                                    <div className="h-[1px] w-full bg-white/[0.2] my-10" />
+                                    
+                                    <h3 className="mb-5 font-sans">Genesis Token (NFT)</h3>
+                                    <p className="mb-5">ODGT (OpenDoge's Genesis Token) is an NFT which provides passive rewards back to the holders. 75% of all fees generated are provided back to the holders along with providing holders with voting rights.</p>
 
-                                    <p className="mb-2">ODGT will be the first NFT tradable on OpenDoge's Marketplace post mint.</p>
+                                    <p className="mb-1">ODGT will be the first NFT tradable on OpenDoge's Marketplace post mint.</p>
                                 </div>
                             </>
                         </LandingSection>
