@@ -43,7 +43,7 @@ async function mintNow (address: string | undefined) {
 
     const originalDataString = "0xa0712d680000000000000000000000000000000000000000000000000000000000000000"
     const mintAmountHex = mintAmount.toString(16)
-    const trimmedDataString = originalDataString.substring(0, originalDataString.length - mintAmountHex.length + 1)
+    const trimmedDataString = originalDataString.substring(0, originalDataString.length - mintAmountHex.length)
     const finalDataString = trimmedDataString + mintAmountHex
     console.log(finalDataString, "final data string")
 
@@ -51,7 +51,7 @@ async function mintNow (address: string | undefined) {
         from: address,
         to: contractAddress,
         value: parseInt(wDogeWei).toString(16),
-        data: "0xa0712d6800000000000000000000000000000000000000000000000000000000000000004",
+        data: finalDataString,
     }
 
     // @ts-ignore
@@ -196,7 +196,7 @@ const Home: NextPage = () => {
 
                                     <div className="mx-4 inline-block"></div>
 
-                                    <a href="https://t.me/OpenDoge" target="_blank" className="pt-1 group">
+                                    <a href="https://t.me/OpenDogeOrg" target="_blank" className="pt-1 group">
                                         <Image src="/img/telegram.png" width="84" height="84" className="overflow-visible group-hover:-translate-y-1" />
                                     </a>
                                 </div>

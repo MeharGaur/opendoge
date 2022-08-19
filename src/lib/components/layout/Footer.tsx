@@ -34,7 +34,7 @@ const Footer = () => {
 
                         <div className="mx-5" />
 
-                        <a href="https://t.me/OpenDoge" target="_blank" className="pt-1 group">
+                        <a href="https://t.me/OpenDogeOrg" target="_blank" className="pt-1 group">
                             <Image src="/img/telegram.png" width="64" height="64" className="overflow-visible group-hover:-translate-y-1" />
                         </a>
                     </div>
