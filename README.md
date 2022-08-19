@@ -1,6 +1,6 @@
-# Moonman Rewards
+# OpenDoge
 
-Full stack dApp created for [Moonman](https://moonman.live) using Next.js, React.js, Tailwind CSS, SASS, Typescript, and Solidity.
+Full stack dApp created for [OpenDoge](https://opendoge.org) using Next.js, React.js, Tailwind CSS, SASS, Typescript, and Solidity.
 ---
 
 - 🔎 SEO optimization configured

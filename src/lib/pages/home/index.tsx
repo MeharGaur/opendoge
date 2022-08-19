@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import clsx from "clsx";
 import { Counter } from "lib/components/ui/counter";
+import { NextSeo } from "next-seo";
 
 export let isValidNetwork = true;
 export let account = '';
@@ -20,13 +21,15 @@ const Home: NextPage = () => {
 
     return (
         <>
+            <NextSeo title="Mint" />
+
             <div className="flex w-full min-h-[100vh] flex-col items-center justify-center text-white">
                 <HeroTitle className={[isConnected && "-mb-2", !isConnected && "-mb-16"]}>
                     <>
                         OpenDoge
                     </>
                     <>
-                        The Premier NFT Marketplace On Dogechain.
+                        The Premier NFT Marketplace on Dogechain.
                     </>
                 </HeroTitle>
 
@@ -106,7 +109,7 @@ const Home: NextPage = () => {
                                     <p className="">Contrary to Opensea, OpenDoge adopts a decentralized and open model, where we redistribute 75% of all marketplace fees and revenue back OpenDoge users and holders of OpenDoge's Genesis Token.</p>
 
                                     <div className="h-[1px] w-full bg-white/[0.2] my-10" />
-                                    
+
                                     <h3 className="mb-5 font-sans">Genesis Token (NFT)</h3>
                                     <p className="mb-5">ODGT (OpenDoge's Genesis Token) is an NFT which provides passive rewards back to the holders. 75% of all fees generated are provided back to the holders along with providing holders with voting rights.</p>
 

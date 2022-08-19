@@ -6,6 +6,7 @@ import { useAccount } from "wagmi";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import clsx from "clsx";
+import { NextSeo } from "next-seo";
 
 export let isValidNetwork = true;
 export let account = '';
@@ -18,13 +19,15 @@ const Marketplace: NextPage = () => {
 
     return (
         <>
+            <NextSeo title="Marketplace" />
+
             <div className="flex w-full min-h-[100vh] flex-col items-center justify-center text-white">
                 <HeroTitle className={["-mb-2"]}>
                     <>
                         OpenDoge Marketplace
                     </>
                     <>
-                        The Premier NFT Marketplace On Dogechain.
+                        The Premier NFT Marketplace on Dogechain.
                     </>
                 </HeroTitle>
 

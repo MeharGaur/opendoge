@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 const NextSitemapConfig = {
-  siteUrl: "https://rewards.moonman.live",
+  siteUrl: "https://opendoge.org",
   generateRobotsTxt: true,
 };
 

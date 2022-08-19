@@ -21,7 +21,7 @@ const Footer = () => {
                 <p>
                     Copyright &copy; &nbsp;
                     {new Date().getFullYear()} –{" "}
-                    <a href="https://moonman.live" target="_blank" rel="noopener noreferrer">
+                    <a href="https://opendoge.org" target="_blank" rel="noopener noreferrer">
                         OpenDoge
                     </a>
                 </p>
