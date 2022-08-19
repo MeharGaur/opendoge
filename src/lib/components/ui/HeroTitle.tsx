@@ -17,11 +17,12 @@ const HeroTitle = ({ children, className }: { children: ReactNode, className: Ar
                 >
                     {Children.toArray(children)[0]}
                 </h1>
-                <p className="text-sm text-rose-100 mt-5 font-light"
+
+                <div className="relative text-sm text-rose-100 mt-5 font-light"
                     style={{ textShadow: "0px 6px 10px rgba(0,0,0,1)" }}
                 >
                     {Children.toArray(children)[1]}
-                </p>
+                </div>
             </div>
         )
     }

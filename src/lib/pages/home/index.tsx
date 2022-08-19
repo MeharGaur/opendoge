@@ -12,6 +12,7 @@ import { NextSeo } from "next-seo";
 import { getContractAddress } from "ethers/lib/utils";
 import Web3 from "web3";
 import BigNum from "bn.js";
+import DiagonalMessage from "lib/components/ui/DiagonalMessage";
 
 export let isValidNetwork = true;
 export let account = '';
@@ -19,7 +20,7 @@ export let account = '';
 let mintAmount = 0;
 const contractAddress = "0x538691A98248D81C6448D0F42C57E407785d63EC";
 
-async function mintNow (address: string | undefined) {
+async function mintNow(address: string | undefined) {
 
     if (mintAmount <= 0) {
         alert("You must mint at least 1 NFT.")
@@ -36,7 +37,7 @@ async function mintNow (address: string | undefined) {
         return;
     }
 
-    const wDogeAmount = 420*mintAmount;
+    const wDogeAmount = 420 * mintAmount;
     const wDogeWei = Web3.utils.toWei(wDogeAmount.toString(), 'ether')
     // value = 420*mintamount in HEX
     // raw hex data for transaction += mintAmount in HEX
@@ -72,7 +73,7 @@ async function mintNow (address: string | undefined) {
         alert(error.message)
     }
 
-} 
+}
 
 const Home: NextPage = () => {
     const { isConnected, address } = useAccount()
@@ -91,16 +92,20 @@ const Home: NextPage = () => {
                     </>
                     <>
                         The Premier NFT Marketplace on Dogechain.
+
+                        <DiagonalMessage>
+                            Minting soon!
+                        </DiagonalMessage>
                     </>
                 </HeroTitle>
 
+
                 <div
-                    suppressHydrationWarning
                     className={clsx("h-full lg:h-96 flex flex-col lg:flex-row text-center items-center rounded-lg mt-20")}
                 >
                     <div
                         className="w-full bg-zinc-900/[.7] backdrop-blur-lg flex flex-col justify-center px-10 py-10 rounded-lg my-6 lg:mr-2 border border-solid border-slate-700">
-                        {(hasMounted && !isConnected) ?
+                        {(hasMounted && !isConnected) &&
                             <>
                                 <p
                                     className="w-auto mt-3 mb-3 text-rose-200 font-light text-lg mb-10"
@@ -113,7 +118,8 @@ const Home: NextPage = () => {
                                     <ConnectButton />
                                 </div>
                             </>
-                            :
+                        }
+                        {(hasMounted && isConnected) &&
                             <>
                                 <div className="flex h-full">
                                     <div className="grow min-h-80 min-w-80 flex flex-col items-center justify-center ml-3 mr-28">

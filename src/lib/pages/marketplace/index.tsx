@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import clsx from "clsx";
 import { NextSeo } from "next-seo";
+import DiagonalMessage from "lib/components/ui/DiagonalMessage";
 
 export let isValidNetwork = true;
 export let account = '';
@@ -28,6 +29,10 @@ const Marketplace: NextPage = () => {
                     </>
                     <>
                         The Premier NFT Marketplace on Dogechain.
+
+                        <DiagonalMessage className="-right-[15%] -top-[460%] rotate-[10deg]">
+                            Under construction!
+                        </DiagonalMessage>
                     </>
                 </HeroTitle>
 

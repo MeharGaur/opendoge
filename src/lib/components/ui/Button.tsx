@@ -11,7 +11,7 @@ const Button = ({ children, className, onClick = () => {} }: ButtonProps) => {
     return (
         <button
             onClick={onClick}
-            className={`btn rounded-lg border-2 border-zinc-900 bg-primary-100 font-bold text-slate-200 hover:bg-primary-200 normal-case font-bold text-xl` + className}
+            className={clsx(className, "btn rounded-lg border-2 border-zinc-900 bg-primary-100 font-bold text-slate-200 hover:bg-primary-200 normal-case font-bold text-xl")}
         >
             <span className="text-lg px-2">
                 {children}
