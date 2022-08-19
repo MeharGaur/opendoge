@@ -7,7 +7,7 @@ import { useAccount, useConnect } from "wagmi";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import clsx from "clsx";
-import { Counter, count } from "lib/components/ui/counter";
+import { Counter } from "lib/components/ui/counter";
 
 export let isValidNetwork = true;
 export let account = '';
@@ -16,8 +16,6 @@ const Home: NextPage = () => {
     const [hasMounted, setHasMounted] = useState(false)
 
     const { isConnected } = useAccount()
-
-    const [mintAmount, setMintAmount] = useState(0)
 
     useEffect(() => {
         setHasMounted(true)
@@ -28,7 +26,6 @@ const Home: NextPage = () => {
             <div className="flex w-full min-h-[100vh] flex-col items-center justify-center text-white">
                 <HeroTitle />
 
-                {/* isConnected && "w-full lg:w-4/5 xl:w-3/5" */}
                 <div
                     suppressHydrationWarning
                     className={clsx("h-full lg:h-96 flex flex-col lg:flex-row text-center items-center rounded-lg mt-20")}
@@ -51,15 +48,16 @@ const Home: NextPage = () => {
                             :
                             <>
                                 <div className="flex h-full">
-                                    <div className="grow min-h-80 min-w-80 flex flex-col items-center justify-center ml-3 mr-20">
-                                        <div className="flex justify-center mb-6 -mt-1">
+                                    <div className="grow min-h-80 min-w-80 flex flex-col items-center justify-center ml-3 mr-28">
+                                        <div className="flex justify-center mb-6 -mt-3">
                                             <div>0/10,000 NFTs Already Minted</div>
                                         </div>
 
-                                        <Counter onChange={(amount:number) => setMintAmount(amount)}/>
+                                        <Counter onChange={counterOnChange} />
 
-                                        <div className="mb-5">
-                                            Cost: {mintAmount*420} $wDOGE
+                                        <div className="-mt-3 mb-10">
+                                            Cost: &nbsp;
+                                            <span id="wdogeCost">0</span> $wDOGE
                                         </div>
 
 
@@ -70,10 +68,10 @@ const Home: NextPage = () => {
                                     </div>
 
                                     <div className="h-full">
-                                        <div className="w-80 h-80 flex flex-col items-center justify-center border border-solid border-white/[0.5] opacity-[0.6] rounded-lg">
+                                        <div className="w-80 h-80 flex flex-col items-center justify-center border border-solid border-white/[0.5] opacity-[0.4] rounded-lg">
                                             <div className="px-8 flex flex-col items-center justify-center">
                                                 <Image className="invert" src="/img/upload.png" width="80" height="80" />
-                                                <p className="mt-7">Your minted NFT will show up here</p>
+                                                <p className="mt-7">Your minted NFTs will show up here</p>
                                             </div>
                                         </div>
                                     </div>
@@ -104,7 +102,7 @@ const Home: NextPage = () => {
                         className="flex-col w-3/5 flex items-center w-full mb-[150px]"
                     >
                         <LandingSection>
-                            <><span id="About">About</span></>
+                            <><span id="about">About</span></>
                             <>
                                 <p className="mb-4">OpenDoge is the premier P2P NFT marketplace built entirely on Dogechain. A massive market exists for ERC-721 & ERC-1155 NFTs on Ethereum Mainnet, OpenDoge seeks to transition this existing market onto Dogechain, where fees are lower and transactions are quicker.</p>
 
@@ -119,20 +117,22 @@ const Home: NextPage = () => {
 
                     <div
                         className="flex-col w-3/5 flex items-center w-full mb-[80px]"
-                        id="Socials"
+                        id="socials"
                     >
                         <LandingSection>
                             <>Socials</>
                             <>
                                 Stay Up To Date With OpenDoge
 
-                                <div className="mt-5 saturate-200">
-                                    <a href="https://twitter.com/OpenDoge" target="_blank">
-                                        <Image src="/img/twitter.png" width="96" height="96" />
+                                <div className="mt-6 saturate-200">
+                                    <a href="https://twitter.com/OpenDoge" target="_blank" className="group">
+                                        <Image src="/img/twitter.png" width="96" height="96" className="overflow-visible group-hover:-translate-y-1" />
                                     </a>
-                                    <div className="mx-2 inline-block"></div>
-                                    <a href="https://t.me/OpenDoge" target="_blank">
-                                        <Image src="/img/telegram.png" width="84" height="84" />
+
+                                    <div className="mx-4 inline-block"></div>
+
+                                    <a href="https://t.me/OpenDoge" target="_blank" className="pt-1 group">
+                                        <Image src="/img/telegram.png" width="84" height="84" className="overflow-visible group-hover:-translate-y-1" />
                                     </a>
                                 </div>
                             </>
@@ -147,5 +147,11 @@ const Home: NextPage = () => {
 
     );
 };
+
+function counterOnChange(amount: number) {
+    const el = document.getElementById("wdogeCost")!
+
+    el.textContent = String(amount * 420)
+}
 
 export default Home;

@@ -1,8 +1,16 @@
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import Image from "next/image";
+import { useEffect, useState } from "react";
+import { useAccount } from "wagmi";
 import NavLink from "../ui/NavLink";
 
 const Header = () => {
+    const { isConnected } = useAccount()
+    
+    const [hasMounted, setHasMounted] = useState(false)
+    useEffect(() => {
+        setHasMounted(true)
+    }, [])
 
     return (
         <>
@@ -16,8 +24,10 @@ const Header = () => {
                     <div
                         className="justify-self-center">
                         <NavLink href="#">Mint</NavLink>
-                        <NavLink href="#About">About</NavLink>
-                        <NavLink href="#Socials">Socials</NavLink>
+                        {!isConnected && hasMounted &&
+                                <NavLink href="#about">About</NavLink>
+                        }
+                        <NavLink href="#socials">Socials</NavLink>
                         <NavLink href="#">Marketplace</NavLink>
                     </div>
 
