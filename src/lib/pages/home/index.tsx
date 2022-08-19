@@ -73,7 +73,7 @@ const Home: NextPage = () => {
                                     </div>
 
                                     <div className="h-full">
-                                        <div className="w-80 h-80 flex flex-col items-center justify-center border-2 border-solid border-white/[0.5] opacity-[0.75] rounded-lg">
+                                        <div className="w-80 h-80 flex flex-col items-center justify-center border border-solid border-white/[0.5] opacity-[0.6] rounded-lg">
                                             <div className="px-8 flex flex-col items-center justify-center">
                                                 <Image className="invert" src="/img/upload.png" width="80" height="80" />
                                                 <p className="mt-7">Your minted NFT will show up here</p>

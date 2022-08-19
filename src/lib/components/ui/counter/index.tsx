@@ -46,7 +46,7 @@ export function Counter() {
                     </div>
                     
                     <div tabIndex={0} className={clsx(styles.counter__dropdown, "dropdown-content menu bg-zinc-900/[0.9] mt-1 rounded-lg w-80 h-20 flex flex-row")}>
-                        <input type="number" min="0" max="10000" placeholder="Type Amount" className="m-3 input h-14 bg-transparent w-full h-full text-xl" />
+                        <input type="number" min="0" max="10000" placeholder="Type Amount" className="m-3 input h-14 bg-transparent w-full h-full text-xl rounded-sm" />
                         <button className="btn btn-sm h-[100%] rounded-none rounded-r-lg">
                             <span className="text-sm">OK</span>
                         </button>
