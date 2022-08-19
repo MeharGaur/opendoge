@@ -42,7 +42,7 @@ const Marketplace: NextPage = () => {
                     <div className="w-full bg-zinc-900/[.7] backdrop-blur-lg flex flex-col justify-center px-10 py-10 rounded-lg my-6 lg:mr-2 border border-solid border-slate-700">
                         <Image src="/img/construction.png" width="256" height="256" />
 
-                        <p className="mt-10">Under Construction <br></br> Release Post Mint</p>
+                        <p className="mt-10 leading-relaxed">Under Construction! <br></br> Releases Post Mint</p>
                     </div>
 
                 </div>
