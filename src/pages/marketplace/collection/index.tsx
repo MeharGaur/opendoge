@@ -1,6 +1,6 @@
 
 
-export function MarketplaceCollection() {
+export default function MarketplaceCollection() {
     return null
 }
 

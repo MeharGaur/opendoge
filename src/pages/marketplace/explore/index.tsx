@@ -1,6 +1,6 @@
 
 
-export function MarketplaceExplore() {
+export default function MarketplaceExplore() {
     return null
 }
 
